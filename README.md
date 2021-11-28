@@ -13,8 +13,8 @@ Task Requirements, Hints and details:
 
 - Create at least 3 empty pages (Dashboard, Categories, Products) 
 - Use React Router to route visitor into above mentioned pages 
-- Create Navlinks that for guiding user to pages. You can use MUI components like AppBar, Drawer, etc. (optional) 
-- Create container component that renders different content according to routed page. 
+- Create Navlinks for guiding user to pages, You can use MUI components like AppBar, Drawer, etc. (optional) 
+- Create container component that renders different content according to routed page.(Composition & HOC) 
 - Re-design products page functionality of previous task(07) with MUI (Textfields, Button, Table for products instead of card)
 
 
