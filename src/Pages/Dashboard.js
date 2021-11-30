@@ -1,14 +1,14 @@
-
+import { Link } from 'react-router-dom'
 import React from 'react'
-import {Link} from 'react-router-dom'
+import NavBar from './NavBar'
 
-export default function DashBoard() {
+export default function DashBoard(props) {
     return (
      
-<div> 
+<NavBar> 
         <h1>Welcome to Dashboard!</h1>
-       <Link to="/">  <button>Go Back</button></Link>
-        </div>
+       <Link to="/">  <button variant="contained">Go Back</button></Link>
+        </NavBar>
        
     )
 }
