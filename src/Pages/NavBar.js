@@ -121,21 +121,21 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
         <Divider />
         <List>
-            <ListItem button key={12}>
+            <ListItem component={Link} to="/Dashboard" button key={12}>
               <ListItemIcon>
-                <Link to="/Dashboard"><DashboardIcon/> </Link>
+               <DashboardIcon/> 
               </ListItemIcon>
               <ListItemText primary={"Dashboard"} />
             </ListItem>
-            <ListItem button key={12}>
+            <ListItem component={Link} to="/Category" button key={12}>
               <ListItemIcon>
-                <Link to="Category"> <CategoryIcon />  </Link>
+                 <CategoryIcon /> 
               </ListItemIcon>
               <ListItemText primary={"Categories"} />
             </ListItem>
-            <ListItem button key={12}>
+            <ListItem  component={Link} to="/Products" button key={12}>
               <ListItemIcon>
-                <Link to="Products"> <ProductionQuantityLimitsIcon /> </Link>
+                <ProductionQuantityLimitsIcon /> 
               </ListItemIcon>
               <ListItemText primary={"Products"} />
             </ListItem>
