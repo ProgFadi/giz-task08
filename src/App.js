@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="" element={<PersistentDrawerLeft />}>
+        <Route path="/" element={<PersistentDrawerLeft />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="categories" element={<Categories />} />
           <Route path="products" element={<Products />} />
