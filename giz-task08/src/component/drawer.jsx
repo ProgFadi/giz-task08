@@ -7,15 +7,12 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from '@mui/icons-material/Mail';
+import {Link} from "react-router-dom";
+// import Categories from "./Categories/Categories";
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
+export default function PermanentDrawerLeft(props) {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -27,6 +24,7 @@ export default function PermanentDrawerLeft() {
                     {/*<Typography variant="h6" noWrap component="div">*/}
                     {/*    Permanent drawer*/}
                     {/*</Typography>*/}
+
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -43,17 +41,30 @@ export default function PermanentDrawerLeft() {
             >
                 <Toolbar />
                 <Divider />
-                <List component={"link"}>
-                    {['Dashboard', 'Categories', 'Products'].map((text, index) => (
-                        <ListItem button key={text}>
+                <List >
+                 <div style={{padding:'7px'}}>
+                     <Link to='/Dashboard' style={{textDecoration:'none', color:'black', marginLeft:'65px'}}>
+                         Dashboard
+                     </Link>
+                 </div>
+                    <div style={{padding:'7px'}}>
 
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                        <Link to='/Categories' style={{textDecoration:'none', color:'black', marginLeft:'65px'}}>
+                            Categories </Link>
+                 </div>
+                    <div style={{padding:'7px'}}>
+                        <Link to='/Products' style={{textDecoration:'none', color:'black', marginLeft:'65px'}}>
+                            Products
+                        </Link>
+                 </div>
+
+
                 </List>
 
             </Drawer>
-
+            <Typography paragraph>
+                {props.children}
+            </Typography>
             <Box
                 component="main"
                 sx={{ flexGrow: 1,

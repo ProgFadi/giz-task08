@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
+import Typography from "../drawer";
+import Home from "./card_product";
 
 class Products extends Component {
     render() {
         return (
-            <div>
-              Products
-            </div>
+            <Typography>
+              <div style={{padding:'50px'}}>
+                   <Home/>
+              </div>
+            </Typography>
         );
     }
 }

@@ -14,9 +14,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<PermanentDrawerLeft/>}/>
-          <Route exact path="/Dashboard" element={<Dashboard/>}/>
-          <Route exact path="/Products" element={<Products/>}/>
-          <Route exact path="/Categories" element={<Categories/>}/>
+          <Route  path="/Dashboard" element={<Dashboard/>}/>
+          <Route  path="/Products" element={<Products/>}/>
+          <Route  path="/Categories" element={<Categories/>}/>
             </Routes>
       </BrowserRouter>
   );

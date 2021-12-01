@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
+import Typography from "../drawer";
 
 class Dashboard extends Component {
     render() {
         return (
-            <div>
-               Dashboard
-            </div>
+          <Typography>
+              <div style={{padding:'150px'}}>
+                  Dashboard
+              </div>
+
+          </Typography>
         );
     }
 }
