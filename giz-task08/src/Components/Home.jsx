@@ -1,9 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import Menu from './Menu'
 
-export default function Home() {
+export default function Home(props) {
     return (
-        <div>
+        <Menu>
+            <Link to="/menu">To menu</Link>
             home 
-        </div>
+        </Menu>
     )
 }

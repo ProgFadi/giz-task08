@@ -1,9 +1,10 @@
 import React from 'react'
+import Menu from './Menu'
 
-export default function Content() {
+export default function Content(props) {
     return (
-        <div>
-            this is content
-        </div>
+        <Menu>
+         <h1> This is Content</h1>
+       </Menu>
     )
 }

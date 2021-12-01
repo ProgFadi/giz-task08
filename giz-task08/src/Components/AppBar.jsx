@@ -1,9 +1,9 @@
 import React from 'react'
-
-export default function AppBar() {
+import Menu from './Menu'
+export default function AppBar(props) {
     return (
-        <div>
+        <Menu>
             This is app bar
-        </div>
+        </Menu>
     )
 }
