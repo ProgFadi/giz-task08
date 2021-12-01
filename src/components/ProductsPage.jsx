@@ -5,18 +5,15 @@ import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Product from './Product';
+import ProductsTable from './ProductsTable';
 
 
 const useStyle = makeStyles({
     btn: {
         widt: '33%',
         height: 50,
-        backgroundColor: '#096063',
         fontSize: 20,
-        "&:hover" : {backgroundColor: '#096063', opacity:.8}
+        "&:hover" : {opacity:.8}
     },
     header: {
         display: 'flex',
@@ -25,6 +22,9 @@ const useStyle = makeStyles({
         marginBottom: 50
     }
 })
+
+
+
 const ProductsPage = () => {
     const classes = useStyle();
     const [alert, setAlert] = useState(false)
@@ -44,7 +44,7 @@ const ProductsPage = () => {
           return
         }
     
-        let filteredProducts = Products.filter((product)=>{return product.name.includes(value)})
+        let filteredProducts = Products.filter((product)=>{return product.name.toLowerCase().includes(value.toLowerCase())})
         setSearchVal(value)
         setFilteredProducts([...filteredProducts])
     }
@@ -101,22 +101,13 @@ const ProductsPage = () => {
                 <div className="head">
                     <TextField label="Name"  color="primary" value={productName} onChange={(e)=>{ setProductName(e.target.value) }} />
                     <TextField label="Price"  color="primary" value={productPrice} onChange={(e)=>{ setProductPrice(e.target.value) }} />
-                    <Button variant="contained" className={classes.btn} onClick={onAdd} >Add New</Button>
+                    <Button variant="contained" color="primary" className={classes.btn} onClick={onAdd} >Add New</Button>
                 </div>
             </div>
            
-            {alert && <Alert severity="error">{Object.values(msg).map((message,index)=>{return <li key={index}>{message}</li>})}</Alert> }
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={1}>
-                    {
-                       
-                        filteredProducts.map((item,index)=>{
-                             return <Grid item xs={4} key={index}> <Product name={item.name} price={item.price} /> </Grid>
-                        })
-                       
-                    }
-                </Grid>
-            </Box>      
+            {alert && <Alert severity="error" sx={{marginBottom:5}}>{Object.values(msg).map((message,index)=>{return <li key={index}>{message}</li>})}</Alert> }
+            {!(filteredProducts.length === 0) && <ProductsTable rows={filteredProducts} />} 
+
         </Container>
     )
 }
