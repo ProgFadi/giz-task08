@@ -123,21 +123,20 @@ export default function MiniDrawer(Comps) {
           </DrawerHeader>
           <Divider />
           <List>
-            <ListItem button key="Home">
+            <ListItem component={Link} to="/" button key="Home">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <Link to="/" className="link-style">
-                <ListItemText primary="Home" />
-              </Link>
+
+              <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button key="Category">
+            <ListItem component={Link} to="/Category" button key="Category">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary="Category" />
             </ListItem>
-            <ListItem button key="Products">
+            <ListItem component={Link} to="/Product" button key="Products">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
