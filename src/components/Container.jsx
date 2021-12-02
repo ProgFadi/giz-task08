@@ -15,9 +15,10 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import CategoryIcon from "@mui/icons-material/Category";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -125,20 +126,20 @@ export default function MiniDrawer(Comps) {
           <List>
             <ListItem component={Link} to="/" button key="Home">
               <ListItemIcon>
-                <InboxIcon />
+                <DashboardIcon />
               </ListItemIcon>
 
               <ListItemText primary="Dashboard" />
             </ListItem>
             <ListItem component={Link} to="/Category" button key="Category">
               <ListItemIcon>
-                <InboxIcon />
+                <CategoryIcon />
               </ListItemIcon>
               <ListItemText primary="Category" />
             </ListItem>
             <ListItem component={Link} to="/Product" button key="Products">
               <ListItemIcon>
-                <InboxIcon />
+                <ShoppingBasketIcon />
               </ListItemIcon>
               <ListItemText primary="Products" />
             </ListItem>

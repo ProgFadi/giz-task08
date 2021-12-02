@@ -1,10 +1,10 @@
 import React from "react";
-import image from "../img.png";
+import shoe_image from "../img.png";
 export default function Product(props) {
   return (
     <div className="single-product-parent" id={props.key}>
       <div>
-        <img src={image} alt="image" />
+        <img src={shoe_image} alt="image" />
       </div>
       <div className="parent-product-type">
         <span className="product-type">{props.product.type}</span>
