@@ -1,10 +1,15 @@
 import "./App.css";
-import PersistentDrawerLeft from "./components/PersistentDrawerLeft";
+import PersistentDrawerLeft from "./PagesComponents/PersistentDrawerLeft";
+import Products from "./PagesComponents/ProductsPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <PersistentDrawerLeft />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<PersistentDrawerLeft />} />
+        <Route path="products" element={<Products />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
