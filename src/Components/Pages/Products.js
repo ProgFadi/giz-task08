@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Form from '../ProfuctsPage/Form';
-import '../ProfuctsPage/product.css';
-import ViewProduct from '../ProfuctsPage/ViewProduct';
+import Form from '../ProductsPage/Form';
+import '../ProductsPage/product.css';
+import ViewProduct from '../ProductsPage/ViewProduct';
 export default function Products() {
     const [inputText,setInputText]=useState("");
     const [inputPrice,setInputPrice]=useState("");
