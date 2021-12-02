@@ -22,21 +22,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(name, brand, price, image, add_to_cart) {
+function createData(name, brand, price) {
   return {
     name,
     brand,
     price,
-    image,
-    add_to_cart,
+    // add_to_cart,
   };
 }
 
-const rows = [
-  createData('Boat Shoes', 'Goodfellow & Co', 3.7, 67, 4.3),
-  createData('Beyant Dress Shoes', 'Goodfellow & Co', 25.0, 51, 4.9),
-  createData('Originals', 'Adidas', 16.0, 24, 6.0),
-];
+// const rows = [
+//   createData('Boat Shoes', 'Goodfellow & Co', 3.7, 67, 4.3),
+//   createData('Beyant Dress Shoes', 'Goodfellow & Co', 25.0, 51, 4.9),
+//   createData('Originals', 'Adidas', 16.0, 24, 6.0),
+// ];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -87,18 +86,13 @@ const headCells = [
     disablePadding: false,
     label: 'Price $',
   },
-  {
-    id: 'image',
-    numeric: false,
-    disablePadding: true,
-    label: 'Image',
-  },
-  {
-    id: 'add_to_cart',
-    numeric: false,
-    disablePadding: true,
-    label: 'Add to Cart',
-  },
+
+  // {
+  //   id: 'add_to_cart',
+  //   numeric: false,
+  //   disablePadding: true,
+  //   label: 'Add to Cart',
+  // },
 ];
 
 function EnhancedTableHead(props) {
@@ -221,13 +215,22 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable() {
+export default function EnhancedTable({ products }) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('brand');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  console.log(products.map((product) => Object.keys(product)));
+  const rows = products.map((product) => createData(...Object.values(product)));
+
+  // const rows = [
+  //   createData('Boat Shoes', 'Goodfellow & Co', 3.7, 67, 4.3),
+  //   createData('Beyant Dress Shoes', 'Goodfellow & Co', 25.0, 51, 4.9),
+  //   createData('Originals', 'Adidas', 16.0, 24, 6.0),
+  // ];
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -339,8 +342,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell>{row.brand}</TableCell>
                       <TableCell>{row.price}</TableCell>
-                      <TableCell>{row.image}</TableCell>
-                      <TableCell>{row.add_to_cart}</TableCell>
+                      {/* <TableCell>{row.add_to_cart}</TableCell> */}
                     </TableRow>
                   );
                 })}
