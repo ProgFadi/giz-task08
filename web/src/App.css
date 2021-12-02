@@ -1,0 +1,21 @@
+table, th, td {
+  border:1px solid black;
+  width:50%;
+  text-align: center;
+  padding: 10px;
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+image{
+  width: 50%;
+}
+
+.inputstyle1{
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.inputstyle2{
+  margin-left: 100px;
+}
