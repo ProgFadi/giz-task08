@@ -3,7 +3,12 @@ import SearchInput from '../components/SearchInput';
 import BasicTextFields from '../components/AddProduct';
 import Box from '@mui/material/Box';
 
-const Products = ({ products, searchValue, handleSearch }) => {
+const Products = ({
+  products,
+  searchValue,
+  handleSearch,
+  addProductHandler,
+}) => {
   return (
     <div>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -12,7 +17,7 @@ const Products = ({ products, searchValue, handleSearch }) => {
           searchValue={searchValue}
           handleSearch={handleSearch}
         />
-        <BasicTextFields />
+        <BasicTextFields addProductHandler={addProductHandler} />
       </Box>
 
       <EnhancedTable products={products} />

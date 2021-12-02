@@ -39,6 +39,10 @@ function App() {
     return product.name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
+  const addProductHandler = (productData) => {
+    setProducts([...products, productData]);
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -52,6 +56,7 @@ function App() {
                 products={filteredProducts}
                 searchValue={searchValue}
                 handleSearch={handleSearch}
+                addProductHandler={addProductHandler}
               />
             }
           />
