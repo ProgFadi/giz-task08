@@ -5,7 +5,7 @@ import Input from "../components/Input";
 
 import "./PagesComponentsStyles/ProductsPage.css";
 
-export default class ProductsPage extends React.Component {
+export default class Products extends React.Component {
   constructor(props) {
     super(props);
 
