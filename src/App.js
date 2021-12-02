@@ -1,4 +1,4 @@
-import PersistentDrawerLeft from './components/PersistentDrawerLeft';
+import PersistentDrawerLeft from './components/Dashboard';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Categories from './pages/Categories';
