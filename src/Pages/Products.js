@@ -35,7 +35,7 @@ const Products = (props) => {
                 <Button sx={{width: '100%'}} variant="contained" startIcon={<AddIcon />}>Add to Cart</Button>
             </CardActions>
         </Card>
-        <Link to="/"> </Link>
+        <Link to="/"><button sx={{width: '100%'}} variant="contained"> Back </button> </Link>
         </NavBar>
     )
 }

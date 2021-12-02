@@ -22,6 +22,7 @@ import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantity
 import Category from './Category';
 import Dashboard from './Dashboard';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -47,6 +48,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+  
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -62,6 +64,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
+  
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
@@ -81,7 +84,24 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  let pathName = useLocation().pathname;
+  console.log(pathName);
+  
+  const getTitle = (pathName) =>{
+    switch(pathName)
+    {
+      case '/Products':
+      return 'Products';
+      break;
+      case '/Dashboard':
+        return 'Dashboard'
+        break;
+        case '/Category':
+          return 'Category'
+    }
+  
+    
+  }
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -97,7 +117,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           Dashboard
+           { getTitle(pathName)}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -121,7 +141,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
         <Divider />
         <List>
-            <ListItem component={Link} to="/Dashboard" button key={12}>
+            <ListItem component={Link} to="/Dashboard" button key={1}>
               <ListItemIcon>
                <DashboardIcon/> 
               </ListItemIcon>
