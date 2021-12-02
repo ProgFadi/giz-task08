@@ -13,10 +13,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import {Link} from 'react-router-dom'
+import Dashboard from './Dashboard';
+import Categories from './Categories';
+import Products from './Products';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import CategoryIcon from '@mui/icons-material/Category';
+// import ItemIcon from '@mui/icons-material/Item';
+
 
 const drawerWidth = 240;
 
@@ -116,14 +121,26 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Dashboard', 'Categories', 'Products'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+          <Link to="/">
+            <ListItem button key={Dashboard}>
+              <DashboardIcon/><h3>Dashboard</h3>
+              <ListItemText primary={Dashboard} />
             </ListItem>
-          ))}
+          </Link>
+
+          <Link to="/categories">
+            <ListItem button key={Categories}>
+              <CategoryIcon/><h3>Categories</h3>
+              <ListItemText primary={Categories} />
+            </ListItem>
+          </Link>
+
+          <Link to="/products">
+            <ListItem button key={Products}>
+              <CategoryIcon/><h3>Products</h3>
+              <ListItemText primary={Products} />
+            </ListItem>
+          </Link>
         </List>
         <Divider />
       </Drawer>
