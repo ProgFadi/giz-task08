@@ -11,6 +11,11 @@ import { InputBase } from '@mui/material';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogActions from "@mui/material/DialogActions";
+import {formatPrice, isNumber, isEmpty} from "./validation";
+
 
 
 function createData(productName, price, description) {
@@ -18,21 +23,38 @@ function createData(productName, price, description) {
 }
 
 const data = [
-    createData('Frozen yoghurt', 159, 'Frozen dessert made with yogurt.'),
-    createData('Ice cream sandwich', 237, 'Frozen dessert consisting of ice cream between two biscuits.'),
-    createData('Eclair', 262, 'Pastry made with choux dough filled with a cream and topped with chocolate icing.'),
-    createData('Cupcake', 305, 'Small cake designed to serve one person'),
-    createData('Gingerbread', 356, 'Baked goods, typically flavored with ginger, cloves and nutmeg'),
+    createData('Frozen yoghurt', formatPrice.format(159), 'Frozen dessert made with yogurt.'),
+    createData('Ice cream sandwich', formatPrice.format(237), 'Frozen dessert consisting of ice cream between two biscuits.'),
+    createData('Eclair', formatPrice.format(262), 'Pastry made with choux dough filled with a cream and topped with chocolate icing.'),
+    createData('Cupcake', formatPrice.format(305), 'Small cake designed to serve one person'),
+    createData('Gingerbread', formatPrice.format(356), 'Baked goods, typically flavored with ginger, cloves and nutmeg'),
 ];
 
 export default function ProductsTable() {
+    /* for search and adding products */
     const [rows, setRows] = useState(data);
     const [searchRows, setSearchRows] = useState(data);
-    const [searched, setSearched] = useState("");
     const [prodName, setProductName] = useState("");
     const [prodPrice, setProductPrice] = useState("");
 
+    /* for validation */
+    const [nameHelperText, setNameHelperText] = useState('');
+    const [priceHelperText, setPriceHelperText] = useState('');
+    const [nameError, setNameError] = useState(false);
+    const [priceError, setPriceError] = useState(false);
 
+    /* for popup alert when attempt to add product without name or price */
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    /* search for product by name */
     const requestSearch = (searchedVal) => {
         const filteredRows = rows.filter((row) => {
             if(!searchedVal){
@@ -43,27 +65,37 @@ export default function ProductsTable() {
         setSearchRows(filteredRows);
     };
 
-    const cancelSearch = () => {
-        setSearched("");
-        setRows(data);
-        requestSearch(searched);
-    };
-
+    /* add product */
     const addProduct = () => {
-        let tempProducts = rows
         let nameValue = prodName
         let priceValue = prodPrice
-        tempProducts.push({
+
+        const newProducts = searchRows.concat({
             productName: nameValue,
-            price: '$'+ priceValue,
-            description:"Cake"
-        })
-        setRows(tempProducts);
-        setSearchRows(tempProducts);
+            price: formatPrice.format(priceValue),
+            description:"Cake" });
+        setRows(newProducts);
+        setSearchRows(newProducts);
     }
+
 
     return (
         <>
+            {/* this dialog opens when the user tries to add product with empty name or price */}
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Enter product details"}
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose}>Ok</Button>
+                </DialogActions>
+            </Dialog>
+
             <Box
                 sx={{
                     display: 'flex',
@@ -80,22 +112,52 @@ export default function ProductsTable() {
                     }}
                 >
                     <TextField
-                        id="demo-helper-text-aligned"
+                        error={nameError}
+                        id="outlined-error-helper-text"
                         label="Name"
                         size="small"
-                        onChange={(event) => setProductName(event.target.value)}
+                        type="text"
+                        helperText={nameHelperText}
+                        onChange={(event) => {
+                            setProductName(event.target.value)
+                            if (isNumber(event.target.value)){
+                                setNameHelperText('Please enter a name');
+                                setNameError(true);
+                            } else {
+                                setNameHelperText('');
+                                setNameError(false);
+                            }
+                        }}
                     />
                     <TextField
-                        id="demo-helper-text-aligned-no-helper"
+                        error={priceError}
+                        id="outlined-error-helper-text"
                         label="Price"
                         size="small"
-                        onChange={(event) => setProductPrice(event.target.value)}
+                        helperText={priceHelperText}
+                        onChange={(event) => {
+                            setProductPrice(event.target.value)
+                            console.log(event.target.value.length)
+                            if (isNumber(event.target.value) || isEmpty(event.target.value.trim())) {
+                                setPriceHelperText('');
+                                setPriceError(false);
+                            } else {
+                                setPriceHelperText('Please enter a number');
+                                setPriceError(true);
+                            }
+                        }}
                     />
                     <Button variant="contained" size={"medium"} style={{
                         textTransform: 'capitalize',
                         fontSize: '14px',
-                        padding: '.5em 1.1em'}}
-                        onClick={addProduct}
+                        }}
+                        onClick={() => {
+                            if(isEmpty(prodName.trim()) || isEmpty(prodPrice.trim())) {
+                                handleClickOpen()
+                            }else {
+                                addProduct()
+                            }
+                        }}
                     >Add product</Button>
                 </Box>
 
@@ -108,7 +170,6 @@ export default function ProductsTable() {
                         placeholder="Search for Product"
                         type='text'
                         onChange={(event) => requestSearch(event.target.value)}
-                        onCancelSearch={() => cancelSearch()}
                     />
                 </Paper>
             </Box>
@@ -138,8 +199,6 @@ export default function ProductsTable() {
                     </TableBody>
                 </Table>
             </TableContainer>
-
         </>
-
     );
 }
