@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react'
 import './App.css'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
@@ -7,27 +8,8 @@ import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 
 
 function App() {
-  // let routes = (
-//   <Switch>
-//     <Route exact path="/">
-//       <Home />
-//     </Route>
-//     <Route path="/Dashboard">
-//       <Dashboard />
-//     </Route>
-//     <Route path="/Categories">
-//       <Categories />
-//     </Route>
-//     <Route path="/Products">
-//       <Products />
-//     </Route>
-//     <Route>
-//       <NoMatch />
-//     </Route>
-//   </Switch>
-// );
-
   return (
+    <ChakraProvider>
     <Router>
         <Nav/>
         <Routes>
@@ -36,8 +18,8 @@ function App() {
           <Route path="/products" element={<Products/>}/>
         </Routes>
     </Router>
+    </ChakraProvider>
 
   )
 }
-
 export default App;
