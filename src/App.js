@@ -4,6 +4,7 @@ import Products from "./PagesComponents/Products";
 import Dashboard from "./PagesComponents/Dashboard";
 import Categories from "./PagesComponents/Categories";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <BrowserRouter>

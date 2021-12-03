@@ -25,14 +25,17 @@ const sideNavMenu = [
   {
     name: "Dashboard",
     icon: <GridViewRoundedIcon />,
+    linkTo: "dashboard",
   },
   {
     name: "Categories",
     icon: <CategoryRoundedIcon />,
+    linkTo: "categories",
   },
   {
     name: "Products",
     icon: <StoreIcon />,
+    linkTo: "products",
   },
 ];
 
@@ -81,9 +84,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -139,7 +142,12 @@ export default function PersistentDrawerLeft() {
         <List>
           {sideNavMenu.map((option) => {
             return (
-              <ListItem button key={option.name}>
+              <ListItem
+                component="a"
+                href={option.linkTo}
+                button
+                key={option.name}
+              >
                 <ListItemIcon>{option.icon}</ListItemIcon>
                 <ListItemText primary={option.name} />
               </ListItem>
@@ -150,7 +158,7 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography paragraph>Hello there :3</Typography>
+        {props.children}
       </Main>
     </Box>
   );

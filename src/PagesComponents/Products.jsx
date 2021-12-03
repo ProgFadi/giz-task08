@@ -4,6 +4,7 @@ import Form from "../components/Form";
 import Input from "../components/Input";
 
 import "./PagesComponentsStyles/ProductsPage.css";
+import PersistentDrawerLeft from "./PersistentDrawerLeft";
 
 export default class Products extends React.Component {
   constructor(props) {
@@ -59,40 +60,42 @@ export default class Products extends React.Component {
   }
   render() {
     return (
-      <div>
-        {/* Upper section */}
-        <div className="upper-bar">
-          {/* Search div */}
-          <Input
-            onChangeFunction={this.onSearchChange}
-            placeholder="Search Products"
-            value={this.state.searchValue}
-          />
-          {/* Add a product div */}
-          <Form styles="form-style" onSubmitFunction={this.addProduct} />
+      <PersistentDrawerLeft>
+        <div>
+          {/* Upper section */}
+          <div className="upper-bar">
+            {/* Search div */}
+            <Input
+              onChangeFunction={this.onSearchChange}
+              placeholder="Search Products"
+              value={this.state.searchValue}
+            />
+            {/* Add a product div */}
+            <Form styles="form-style" onSubmitFunction={this.addProduct} />
+          </div>
+          <div className="products">
+            {/* Products section */}
+            {this.state.filteredProducts.length === 0 &&
+            this.state.searchValue === ""
+              ? this.state.products.map((productObj) => {
+                  return (
+                    <Product
+                      productName={productObj.productName}
+                      productPrice={productObj.productPrice}
+                    />
+                  );
+                })
+              : this.state.filteredProducts.map((productObj) => {
+                  return (
+                    <Product
+                      productName={productObj.productName}
+                      productPrice={productObj.productPrice}
+                    />
+                  );
+                })}
+          </div>
         </div>
-        <div className="products">
-          {/* Products section */}
-          {this.state.filteredProducts.length === 0 &&
-          this.state.searchValue === ""
-            ? this.state.products.map((productObj) => {
-                return (
-                  <Product
-                    productName={productObj.productName}
-                    productPrice={productObj.productPrice}
-                  />
-                );
-              })
-            : this.state.filteredProducts.map((productObj) => {
-                return (
-                  <Product
-                    productName={productObj.productName}
-                    productPrice={productObj.productPrice}
-                  />
-                );
-              })}
-        </div>
-      </div>
+      </PersistentDrawerLeft>
     );
   }
 }
