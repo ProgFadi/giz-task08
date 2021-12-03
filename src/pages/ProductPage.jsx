@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Inputs from "../components/Inputs";
 import Buttons from "../components/Buttons";
 import MiniDrawer from "../components/Container";
-import Product from "../components/Product";
+// import Product from "../components/Product";
+import Product from "../components/ProductCard";
 import "../App.css";
 function ProductPage() {
   const [product_name, setName] = useState("");
