@@ -2,6 +2,7 @@ import React from "react";
 import Product from "./Product";
 import Input from "./Input";
 import Button from "./Button";
+import "D:/GIZ - Bootcamp/front-task/giz-task08/src/static/style/pageproduct.css";
 
 class PageProduct extends React.Component {
   constructor(props) {
