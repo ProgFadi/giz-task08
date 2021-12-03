@@ -5,27 +5,7 @@ import MiniDrawer from "../components/Container";
 // import Product from "../components/Product";
 // import Product from "../components/ProductCard";
 import Product from "../components/ProductTable";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
-import "../App.css";
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
+import "../../App.css";
 function ProductPage() {
   const [product_name, setName] = useState("");
   const [product_price, setPrice] = useState("");
@@ -105,28 +85,10 @@ function ProductPage() {
           </div>
         </div>
       </div>
-      <div>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700, mt: 8 }} aria-label="customized table">
-            <TableHead
-              sx={{
-                bgcolor: "primary.main",
-              }}
-            >
-              <TableRow>
-                <StyledTableCell>Title</StyledTableCell>
-                <StyledTableCell align="right">Type</StyledTableCell>
-                <StyledTableCell align="right">Price</StyledTableCell>
-                <StyledTableCell align="right">Action</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {items_filter.map((item, index) => {
-                return <Product key={index} product={item} />;
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+      <div className="product-parent">
+        {items_filter.map((item, index) => {
+          return <Product key={index} product={item} />;
+        })}
       </div>
     </div>
   );
