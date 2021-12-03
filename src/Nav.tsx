@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Box,
   Flex,
@@ -10,24 +9,9 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { Link as ReactLink } from 'react-router-dom'
 
-const Links = ['Dashboard', 'Categories', 'Products'];
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={children}>
-    {children}
-  </Link>
-);
-
-export default function Simple() {
+export default function Simple({routes}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -46,9 +30,7 @@ export default function Simple() {
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+                {routes.map((r, i) => <Link as={ReactLink} to={r.path} key="navbar_bar_links{i}">{r.name}</Link>)}
             </HStack>
           </HStack>
         </Flex>
@@ -56,9 +38,7 @@ export default function Simple() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+                {routes.map((r, i) => <Link as={ReactLink} to={r.path} key="side_bar_links{i}">{r.name}</Link>)}
             </Stack>
           </Box>
         ) : null}
