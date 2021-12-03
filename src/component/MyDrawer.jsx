@@ -67,7 +67,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft(props) {
+export default function MyDrawer(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -118,7 +118,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
         <Divider />
         <List>
-        <ListItem component={Link} to="/dashboard"  button key={"dashboard"}>
+        <ListItem component={Link} to="/"  button key={"dashboard"}>
               <ListItemIcon>
              <DashboardIcon />
               </ListItemIcon>

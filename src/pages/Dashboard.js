@@ -1,11 +1,10 @@
-import React from 'react'
-import Drawer from './Drawer'
+import MyDrawer from '../component/MyDrawer'
 
 function Dashboard() {
     return (
-        <Drawer>
+        <MyDrawer>
            Dashboard 
-        </Drawer>
+        </MyDrawer>
     )
 }
 

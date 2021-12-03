@@ -1,11 +1,10 @@
-import React from 'react'
-import Drawer from './Drawer'
+import MyDrawer from '../component/MyDrawer'
 
 function Categories() {
     return (
-        <Drawer>
+        <MyDrawer>
           Categories  
-        </Drawer>
+        </MyDrawer>
     )
 }
 
