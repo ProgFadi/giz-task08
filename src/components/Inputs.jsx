@@ -1,13 +1,14 @@
 import React from "react";
-
+import TextField from "@mui/material/TextField";
 export default function Inputs(props) {
   return (
-    <input
+    <TextField
       onChange={props.onChange}
       name={props.name}
       value={props.value}
-      placeholder={props.ph}
+      label={props.ph}
       className={props.ClassName}
-    ></input>
+      variant="outlined"
+    ></TextField>
   );
 }
