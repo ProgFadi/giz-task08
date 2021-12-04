@@ -1,8 +1,14 @@
 import React from "react";
-import Product from "./Product";
 import Input from "./Input";
 import Button from "./Button";
 import "D:/GIZ - Bootcamp/front-task/giz-task08/src/static/style/pageproduct.css";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 class PageProduct extends React.Component {
   constructor(props) {
@@ -81,10 +87,46 @@ class PageProduct extends React.Component {
           <div className="addProduct-section">
             <Input className="input-addProduct" placeholder="Name" />
             <Input className="input-addProduct" placeholder="Price" />
-            <Button className="btn-addProduct" onClick={this.addProduct} title="Add new product" />
+            <Button
+              title="Add new product"
+              className="btn-addProduct"
+              size="small"
+              onClick={this.addProduct}
+            >
+              Add a row
+            </Button>
           </div>
         </div>
 
+        <div>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">Name </TableCell>
+                  <TableCell align="center">Description</TableCell>
+                  <TableCell align="center">Prics</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.products.map((row) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell align="center" component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="center">{row.description}</TableCell>
+                    <TableCell align="center">{row.prics}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+
+        {/* <BasicTable />
         <div className="products-area">
           {this.state.searchResult && this.state.searchResult.length > 0
             ? this.state.searchResult.map((product) => (
@@ -93,7 +135,7 @@ class PageProduct extends React.Component {
             : this.state.products.map((product) => (
                 <Product product={product}></Product>
               ))}
-        </div>
+        </div> */}
       </div>
     );
   }

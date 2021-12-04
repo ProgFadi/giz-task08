@@ -12,7 +12,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
-
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -63,7 +62,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  
+  //background: "blue", //this does not change the header color
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
@@ -93,7 +92,7 @@ export default function DrawerLeft(props) {
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
-            <MenuIcon /> 
+            <MenuIcon />
             {/* why <DrawerHeader /> ?????????????????????????????? */}
             {/* {props.children} */}
           </IconButton>
@@ -101,6 +100,7 @@ export default function DrawerLeft(props) {
         </Toolbar>
       </AppBar>
       <Drawer
+      
         sx={{
           width: drawerWidth,
           flexShrink: 0,
