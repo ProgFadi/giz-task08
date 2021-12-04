@@ -32,6 +32,9 @@ function ProductPage() {
   const [search_value, setSearch] = useState("");
   const [items, setItem] = useState([]);
   const [items_filter, setFilter] = useState([]);
+  // this is for ui validate
+  const [nameError, setNameError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
 
   function ProductChange(e) {
     setName(e.target.value);
@@ -41,6 +44,15 @@ function ProductPage() {
     setPrice(e.target.value);
   }
   function AddProduct(e) {
+    setNameError(false);
+    setPriceError(false);
+
+    if (!product_name) {
+      setNameError(true);
+    }
+    if (!product_price) {
+      setPriceError(true);
+    }
     let product_val = product_name;
     let price_val = product_price;
     if (product_val && price_val) {
@@ -79,6 +91,7 @@ function ProductPage() {
             value={search_value}
             onChange={onSearchChange}
             ClassName="single-input-left"
+            error={false}
           />
         </div>
         <div className="input-right-bar">
@@ -89,6 +102,7 @@ function ProductPage() {
               value={product_name}
               onChange={ProductChange}
               ClassName="single-input-right"
+              error={nameError}
             />
             <Inputs
               name="product_price"
@@ -96,6 +110,7 @@ function ProductPage() {
               value={product_price}
               onChange={PriceChange}
               ClassName="single-input-right"
+              error={priceError}
             />
             {/* </div> */}
             {/* </div> */}

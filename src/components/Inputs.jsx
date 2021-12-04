@@ -9,6 +9,7 @@ export default function Inputs(props) {
       label={props.ph}
       className={props.ClassName}
       variant="outlined"
+      error={props.error}
     ></TextField>
   );
 }
