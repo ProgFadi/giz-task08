@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const  Bodw=styled.div`
 background-color: #FFFAE2;
+  padding-top: 40px;
 `;
 
 const Container = styled.div`
@@ -54,10 +55,11 @@ const Bod=styled.div`
 `;
 const Card =styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    //padding-top: 20px;
+    //padding-bottom: 0px;
     background-color: white;
-    width: 15%;
+    width: 35%;
     border-radius: 10px;
+  
     //alt:"Avatar"; 
   `;
 
@@ -188,8 +190,11 @@ class Home extends React.Component{
                     </Wrapper>
 
                 </Container>
+                <Bod >
+
                 {
-                    this.state.filteredPoints.map((item=><Bod key={item.id}><Card>
+                    this.state.filteredPoints.map((item=>
+                            <Card>
                         <img src={'./assets/img.png'}/>
                         <h6>{item.category}</h6>
                         <RowText>
@@ -201,8 +206,10 @@ class Home extends React.Component{
                         </BottonB>
 
 
-                    </Card></Bod>))
+                    </Card>
+                       ))
                 }
+                        </Bod>
             </div>
         </Bodw>
     }
