@@ -6,7 +6,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -15,25 +14,36 @@ import { faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import CategoryIcon from '@mui/icons-material/Category';
 import { useNavigate } from 'react-router-dom';
+import '../styles/style.css'
+import {
+    ListItemStyle,
+    ContentBoxStyle,
+    ChildBoxStyle,
+    ToolBarStyle,
+    TypographyStyle,
+    Appbar
+} from '../styles/HomePageStyles'
 
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft(props) {
     const navigate = useNavigate();
+    const pathname = window.location.pathname
 
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={ContentBoxStyle} className={'box'}>
             <CssBaseline />
-            <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap component="div">
-                        Permanent drawer
+            <AppBar  elevation={0} position="fixed" sx={Appbar(drawerWidth)} >
+                <Toolbar sx={ToolBarStyle}>
+                    <Typography variant="h6" noWrap component="div" sx={TypographyStyle}>
+                        {pathname !== '/' ? pathname.slice(1) : 'home'}
                     </Typography>
                 </Toolbar>
             </AppBar>
 
             <Drawer
+                className={'drawer'}
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
@@ -46,36 +56,36 @@ export default function PermanentDrawerLeft(props) {
                 anchor="left">
 
                 <Toolbar />
-                <Divider />
 
-
-                <List>
+                <List className={'list'}>
                     {['Dashboard', 'Categories', 'Products'].map((text, index) => (
-                            <ListItem button key={text} onClick={() => {navigate('/'+text.toLowerCase())}} >
-                                <ListItemIcon style={{fontSize: '19.5px'}}>
+                            <ListItem button sx={ListItemStyle} key={text} onClick={() => {navigate('/'+text.toLowerCase())}} >
+                                <ListItemIcon >
                                     {(() => {
                                         switch (index) {
                                             case 0:
-                                                return <FontAwesomeIcon icon={faChartLine} />;
+                                                return <i className={'listItemIcon1'}><FontAwesomeIcon  icon={faChartLine} /></i>;
                                             case 1:
-                                                return  <CategoryIcon />;
+                                                return  <i className={'listItemIcon2'}><CategoryIcon /></i>;
                                             case 2:
-                                                return  <FontAwesomeIcon icon={faShoppingCart} />;
+                                                return  <i className={'listItemIcon3'}><FontAwesomeIcon icon={faShoppingCart} /></i>;
                                             default:
                                                 return null;
                                         }
                                     })()}
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={text} primaryTypographyProps={{
+                                    fontFamily: '\'Poppins\', sans-serif',
+                                    color: '#4F5264',
+                                }} />
                             </ListItem>
                     ))}
                 </List>
 
-                <Divider />
+                {/*<Divider />*/}
             </Drawer>
 
-            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
-                <Toolbar />
+            <Box component="main" sx={ChildBoxStyle}>
                 {props.children}
             </Box>
 

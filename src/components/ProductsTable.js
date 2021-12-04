@@ -15,7 +15,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import {formatPrice, isNumber, isEmpty} from "./validation";
-
+import {ButtonStyle, DialogStyle, InputFieldPlaceholderStyle, InputFieldTextStyle, InputsBoxStyle, SearchBarStyle, TableStyle,} from "./styles/ProductsTableStyles";
 
 
 function createData(productName, price, description) {
@@ -88,23 +88,15 @@ export default function ProductsTable() {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">
+                <DialogTitle id="alert-dialog-title" sx={DialogStyle}>
                     {"Enter product details"}
                 </DialogTitle>
                 <DialogActions>
-                    <Button onClick={handleClose}>Ok</Button>
+                    <Button onClick={handleClose} sx={DialogStyle}>Ok</Button>
                 </DialogActions>
             </Dialog>
 
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row-reverse',
-                    justifyContent:'space-between',
-                    alignItems: 'center',
-                    '& > :not(style)': { m: 1, mb: 3 },
-                }}
-            >
+            <Box sx={InputsBoxStyle} >
                 <Box
                     sx={{
                         display: 'flex',
@@ -117,6 +109,8 @@ export default function ProductsTable() {
                         label="Name"
                         size="small"
                         type="text"
+                        InputProps={{style: InputFieldTextStyle}}
+                        InputLabelProps={{style: InputFieldPlaceholderStyle}}
                         helperText={nameHelperText}
                         onChange={(event) => {
                             setProductName(event.target.value)
@@ -134,6 +128,8 @@ export default function ProductsTable() {
                         id="outlined-error-helper-text"
                         label="Price"
                         size="small"
+                        InputProps={{style: InputFieldTextStyle}}
+                        InputLabelProps={{style: InputFieldPlaceholderStyle}}
                         helperText={priceHelperText}
                         onChange={(event) => {
                             setProductPrice(event.target.value)
@@ -147,10 +143,7 @@ export default function ProductsTable() {
                             }
                         }}
                     />
-                    <Button variant="contained" size={"medium"} style={{
-                        textTransform: 'capitalize',
-                        fontSize: '14px',
-                        }}
+                    <Button variant="contained"  size={"small"} sx={ButtonStyle}
                         onClick={() => {
                             if(isEmpty(prodName.trim()) || isEmpty(prodPrice.trim())) {
                                 handleClickOpen()
@@ -166,9 +159,10 @@ export default function ProductsTable() {
                     sx={{ p: '.4em', display: 'flex',  width: 350 }}
                 >
                     <InputBase
-                        sx={{ ml: 1, flex: 1 }}
+                        sx={SearchBarStyle}
                         placeholder="Search for Product"
                         type='text'
+                        inputProps={{style: SearchBarStyle}}
                         onChange={(event) => requestSearch(event.target.value)}
                     />
                 </Paper>
@@ -177,10 +171,10 @@ export default function ProductsTable() {
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Product Name</TableCell>
-                            <TableCell align="right">Price</TableCell>
-                            <TableCell align="left">Description</TableCell>
+                        <TableRow >
+                            <TableCell sx={TableStyle} >Product Name</TableCell>
+                            <TableCell sx={TableStyle} >Price</TableCell>
+                            <TableCell sx={TableStyle} >Description</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -189,11 +183,11 @@ export default function ProductsTable() {
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell sx={TableStyle} component="th" scope="row">
                                     {row.productName}
                                 </TableCell>
-                                <TableCell align="right">{row.price}</TableCell>
-                                <TableCell align="left">{row.description}</TableCell>
+                                <TableCell sx={TableStyle} >{row.price}</TableCell>
+                                <TableCell sx={TableStyle} >{row.description}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
