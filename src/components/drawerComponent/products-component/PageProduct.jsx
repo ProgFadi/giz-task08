@@ -109,7 +109,8 @@ class PageProduct extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.state.products.map((row) => (
+                {this.state.searchResult && this.state.searchResult.length > 0
+                ? this.state.searchResult.map((row) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -120,7 +121,20 @@ class PageProduct extends React.Component {
                     <TableCell align="center">{row.description}</TableCell>
                     <TableCell align="center">{row.prics}</TableCell>
                   </TableRow>
-                ))}
+                ))
+              :this.state.products.map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="center" component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="center">{row.description}</TableCell>
+                  <TableCell align="center">{row.prics}</TableCell>
+                </TableRow>
+              ))
+              }
               </TableBody>
             </Table>
           </TableContainer>
