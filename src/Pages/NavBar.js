@@ -85,20 +85,20 @@ export default function PersistentDrawerLeft(props) {
     setOpen(false);
   };
   let pathName = useLocation().pathname;
-  console.log(pathName);
+    console.log(pathName);
   
-  const getTitle = (pathName) =>{
-    switch(pathName)
-    {
-      case '/Products':
-      return 'Products';
-      break;
-      case '/Dashboard':
-        return 'Dashboard'
-        break;
-        case '/Category':
-          return 'Category'
-    }
+      const getTitle = (pathName) =>{
+        switch(pathName)
+        {
+          case '/Products':
+          return 'Products';
+          break;
+          case '/Dashboard':
+            return 'Dashboard'
+            break;
+            case '/Category':
+              return 'Category'
+        }
   
     
   }
@@ -117,7 +117,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           { getTitle(pathName)}
+          { getTitle(pathName)}
           </Typography>
         </Toolbar>
       </AppBar>
