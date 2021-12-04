@@ -18,7 +18,7 @@ import "../App.css";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.secondary.light,
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -106,13 +106,9 @@ function ProductPage() {
         </div>
       </div>
       <div>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700, mt: 8 }} aria-label="customized table">
-            <TableHead
-              sx={{
-                bgcolor: "primary.main",
-              }}
-            >
+        <TableContainer color="primary">
+          <Table sx={{ minWidth: 700, mt: 8 }} color="primary" aria-label="customized table">
+            <TableHead color="primary">
               <TableRow>
                 <StyledTableCell>Title</StyledTableCell>
                 <StyledTableCell align="right">Type</StyledTableCell>
