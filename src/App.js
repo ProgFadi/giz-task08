@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from "./componot/MainPage"
@@ -9,7 +8,6 @@ import CategoriesPage from './componot/Categories';
 
 function App() {
   return (
-    // <div className="App">
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/drawer" element={<MiniDrawer />} />
@@ -20,8 +18,5 @@ function App() {
     </Routes>
   );
 }
-
-// {/* <Route path="/drawer" element={<MiniDrawer />}/> */}
-// {/* </div> */}
 
 export default App;
