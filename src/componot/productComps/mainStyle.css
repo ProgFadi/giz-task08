@@ -1,0 +1,16 @@
+.main-continer {
+    margin-top: 25px;
+}
+
+.menu-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-products{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
