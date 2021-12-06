@@ -1,0 +1,8 @@
+
+.Flex{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
+}
