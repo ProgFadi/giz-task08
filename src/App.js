@@ -7,9 +7,9 @@ function App() {
     <div className="App">
     <Routes>
       <Route exact path="/" element={Drawer}/>
-      <Route exact path="Dashboard" element={Drawer}/>
-      <Route exact path="Categories" element={Drawer}/>
-      <Route exact path="Products" element={Drawer}/>
+      <Route exact path="Dashboard" element={Dashboard}/>
+      <Route exact path="Categories" element={Categories"}/>
+      <Route exact path="Products" element={Products}/>
     </Routes>
     </div>
   );
