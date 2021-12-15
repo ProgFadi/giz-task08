@@ -1,0 +1,8 @@
+body{background: rgb(219, 196, 166);}
+.cardmap{
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 40%;
+    
+}
