@@ -1,0 +1,11 @@
+.prodect{
+    display: flex;
+    color: brown;
+    flex-direction:column;
+    margin: 2%;
+}
+
+.add_prodect{
+    font-size: 70%;
+    width: 9%;
+}
